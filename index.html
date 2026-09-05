@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hareram Engla — Solutions Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E141B;
+    --panel:#141C25;
+    --paper:#ECE8DE;
+    --muted:#8D95A0;
+    --line:#223140;
+    --amber:#C98A3E;
+    --teal:#4FA396;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Space Grotesk', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+  a{ color:inherit; }
+  .wrap{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* NAV */
+  header.site{
+    position:sticky; top:0; z-index:10;
+    background:rgba(14,20,27,0.9);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .navrow{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:16px 24px;
+    max-width:760px; margin:0 auto;
+  }
+  .navrow .name{ font-weight:600; font-size:15px; letter-spacing:0.01em; }
+  .navlinks{ display:flex; gap:22px; }
+  .navlinks a{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px; color:var(--muted); text-decoration:none;
+    transition:color .15s ease;
+  }
+  .navlinks a:hover{ color:var(--paper); }
+
+  /* HERO */
+  .hero{ padding:88px 0 56px; }
+  .hero p.kicker{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px; color:var(--amber);
+    margin:0 0 18px;
+  }
+  .hero h1{
+    font-size:40px;
+    line-height:1.18;
+    font-weight:600;
+    margin:0 0 22px;
+    max-width:600px;
+    letter-spacing:-0.01em;
+  }
+  .hero p.sub{
+    font-size:17px;
+    color:var(--muted);
+    max-width:520px;
+    margin:0 0 34px;
+  }
+  .stat-strip{
+    display:flex; flex-wrap:wrap; gap:0;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .stat{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--muted);
+    padding:14px 20px 14px 0;
+    margin-right:20px;
+    border-right:1px solid var(--line);
+  }
+  .stat:last-child{ border-right:none; }
+  .stat b{ color:var(--paper); font-weight:500; }
+
+  /* SECTIONS */
+  section{ padding:64px 0; border-bottom:1px solid var(--line); }
+  section:last-of-type{ border-bottom:none; }
+  .section-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--muted);
+    margin:0 0 8px;
+  }
+  h2.section-title{
+    font-size:24px; font-weight:600; margin:0 0 36px;
+  }
+
+  /* WORK (professional) */
+  .role{
+    display:grid; grid-template-columns:150px 1fr; gap:18px;
+    padding:18px 0; border-top:1px solid var(--line);
+  }
+  .role:first-of-type{ border-top:none; }
+  .role .when{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px; color:var(--muted); padding-top:2px;
+  }
+  .role h3{ margin:0 0 6px; font-size:16.5px; font-weight:600; }
+  .role p{ margin:0; color:var(--muted); font-size:14.5px; }
+
+  /* PROJECTS */
+  .project{
+    border-left:2px solid var(--line);
+    padding:6px 0 6px 26px;
+    margin-bottom:56px;
+    position:relative;
+  }
+  .project:last-child{ margin-bottom:0; }
+  .project .accent-icon{ margin-bottom:18px; }
+  .project h3{
+    font-size:21px; font-weight:600; margin:0 0 10px;
+  }
+  .project .tagline{
+    color:var(--muted); font-size:15px; margin:0 0 20px; max-width:520px;
+  }
+  .kv{ margin-bottom:16px; }
+  .kv .k{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px; text-transform:uppercase; letter-spacing:0.06em;
+    color:var(--teal); display:block; margin-bottom:6px;
+  }
+  .kv .v{ font-size:14.5px; color:var(--paper); max-width:540px; }
+  .tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; }
+  .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px; color:var(--muted);
+    border:1px solid var(--line); border-radius:3px;
+    padding:4px 9px;
+  }
+  .repo-link{
+    display:inline-block; margin-top:22px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px; color:var(--amber); text-decoration:none;
+    border-bottom:1px solid rgba(201,138,62,0.4);
+    padding-bottom:2px;
+  }
+  .repo-link:hover{ border-color:var(--amber); }
+
+  /* CONTACT */
+  .contact h2.section-title{ margin-bottom:14px; }
+  .contact p.sub{ color:var(--muted); font-size:15.5px; max-width:460px; margin:0 0 30px; }
+  .contact-links{ display:flex; flex-direction:column; gap:2px; }
+  .contact-links a{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:16px 0; border-top:1px solid var(--line);
+    text-decoration:none; font-size:15.5px;
+  }
+  .contact-links a:last-child{ border-bottom:1px solid var(--line); }
+  .contact-links .label{ color:var(--paper); }
+  .contact-links .value{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px; color:var(--muted);
+  }
+
+  footer{
+    padding:28px 0 48px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px; color:var(--muted);
+  }
+
+  @media (max-width:600px){
+    .hero h1{ font-size:30px; }
+    .role{ grid-template-columns:1fr; gap:4px; }
+    .navlinks{ gap:14px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="navrow">
+    <span class="name">Hareram Engla</span>
+    <nav class="navlinks">
+      <a href="#work">Work</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero">
+    <p class="kicker mono">Solutions Engineer — London</p>
+    <h1>I build the systems I support, not just the tickets that come with them.</h1>
+    <p class="sub">Fourteen years keeping enterprise ad and trading platforms running, and a habit of building my own tools — voice AI agents and automated trading systems — when the problem is interesting enough to chase after hours.</p>
+    <div class="stat-strip">
+      <span class="stat"><b>14+ yrs</b> AdTech &amp; FinTech</span>
+      <span class="stat"><b>4+ yrs</b> Tier 1 enterprise support</span>
+      <span class="stat"><b>2</b> self-directed platforms shipped</span>
+    </div>
+  </section>
+
+  <section id="work">
+    <p class="section-label mono">Professional</p>
+    <h2 class="section-title">Where I've worked</h2>
+
+    <div class="role">
+      <div class="when mono">2022 — Present</div>
+      <div>
+        <h3>FreeWheel (A Comcast Company)</h3>
+        <p>Senior Support &amp; Solutions Engineer. Primary technical contact for Tier 1 EMEA publishers and broadcasters on an API-first ad decisioning platform.</p>
+      </div>
+    </div>
+
+    <div class="role">
+      <div class="when mono">2018 — 2022</div>
+      <div>
+        <h3>Goldman Sachs International</h3>
+        <p>Technical Support Analyst, Prime Services. 100% SLA adherence for client reporting platforms across 30+ global trading desks.</p>
+      </div>
+    </div>
+
+    <div class="role">
+      <div class="when mono">2013 — 2018</div>
+      <div>
+        <h3>Infosys Ltd.</h3>
+        <p>Team Lead. Led a 12-person technical support and analytics team for a major US healthcare insurance client.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <p class="section-label mono">Self-directed</p>
+    <h2 class="section-title">What I build when no one's asking</h2>
+
+    <div class="project">
+      <div class="accent-icon">
+        <svg width="120" height="28" viewBox="0 0 120 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 14 Q4 2 8 14 T16 14 Q20 26 24 14 T32 14 Q36 4 40 14 T48 14 Q52 22 56 14 T64 14 Q68 6 72 14 T80 14 Q84 20 88 14 T96 14 Q100 8 104 14 T112 14 Q116 18 120 14" stroke="#4FA396" stroke-width="1.5" fill="none"/>
+        </svg>
+      </div>
+      <h3>Voice AI Agent Systems</h3>
+      <p class="tagline">End-to-end conversational voice agents — designed, built, and evaluated from scratch, with no existing playbook to follow.</p>
+
+      <div class="kv">
+        <span class="k">The problem</span>
+        <div class="v">Most conversational agents fall apart the moment a real customer goes off-script. Getting them production-ready means more than a clever prompt — it means catching failure modes before a customer does.</div>
+      </div>
+      <div class="kv">
+        <span class="k">What I built</span>
+        <div class="v">Multiple inbound and outbound voice agents with distinct personas, using prompt and context engineering, function-calling integrations with the Gemini and OpenAI APIs, and language handling for natural conversation flow.</div>
+      </div>
+      <div class="kv">
+        <span class="k">How I evaluated it</span>
+        <div class="v">Built a structured evaluation pipeline covering 75+ test cases to systematically surface failure modes, tone inconsistencies, and off-script behaviour before shipping changes — then used transcript analysis to drive faster, evidence-based iteration.</div>
+      </div>
+
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">Gemini API</span>
+        <span class="tag">OpenAI API</span>
+        <span class="tag">Prompt Engineering</span>
+        <span class="tag">Agent Evaluation</span>
+      </div>
+
+      <a class="repo-link mono" href="https://github.com/hareramengla/voice-ai-agents">github.com/hareramengla/voice-ai-agents</a>
+    </div>
+
+    <div class="project">
+      <div class="accent-icon">
+        <svg width="120" height="28" viewBox="0 0 120 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 22 L14 22 L14 16 L26 16 L26 20 L38 20 L38 8 L50 8 L50 14 L62 14 L62 4 L74 4 L74 12 L86 12 L86 18 L98 18 L98 6 L110 6 L110 10 L120 10" stroke="#C98A3E" stroke-width="1.5" fill="none"/>
+        </svg>
+      </div>
+      <h3>Algorithmic Trading Systems</h3>
+      <p class="tagline">Automated trading infrastructure spanning two live markets — Indian equity derivatives and global forex/metals.</p>
+
+      <div class="kv">
+        <span class="k">The problem</span>
+        <div class="v">Manual trade execution across fast-moving derivatives and forex markets is slow, inconsistent, and hard to run with discipline. I wanted systems that could take a strategy from signal to execution without emotion in the loop.</div>
+      </div>
+      <div class="kv">
+        <span class="k">What I built</span>
+        <div class="v">Two automated trading systems: one integrating with Zerodha's Kite Connect API for Indian options (F&amp;O) trading, and another built on MetaTrader 5 for forex and metals — each handling data ingestion, signal generation, order execution, and risk controls.</div>
+      </div>
+      <div class="kv">
+        <span class="k">How it's structured</span>
+        <div class="v">Credentials and strategy parameters are kept out of the public repo; what's shared is the system architecture — data pipeline, execution logic, and risk management design — so the engineering is visible without exposing the live trading edge.</div>
+      </div>
+
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">Kite Connect API</span>
+        <span class="tag">MetaTrader 5</span>
+        <span class="tag">Automated Execution</span>
+        <span class="tag">Risk Management</span>
+      </div>
+
+      <a class="repo-link mono" href="https://github.com/hareramengla/algo-trading-systems">github.com/hareramengla/algo-trading-systems</a>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <p class="section-label mono">Get in touch</p>
+    <h2 class="section-title">Let's talk</h2>
+    <p class="sub">Open to Solutions Engineering, Technical Account Management, and AI-forward technical roles.</p>
+
+    <div class="contact-links">
+      <a href="mailto:engla.hareram77@gmail.com">
+        <span class="label">Email</span>
+        <span class="value mono">engla.hareram77@gmail.com</span>
+      </a>
+      <a href="https://linkedin.com/in/hareram-engla-se" target="_blank">
+        <span class="label">LinkedIn</span>
+        <span class="value mono">linkedin.com/in/hareram-engla-se</span>
+      </a>
+      <a href="https://github.com/hareramengla" target="_blank">
+        <span class="label">GitHub</span>
+        <span class="value mono">github.com/hareramengla</span>
+      </a>
+      <a href="tel:+447880918342">
+        <span class="label">Phone</span>
+        <span class="value mono">+44 7880 918342</span>
+      </a>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">London, UK</div>
+</footer>
+
+</body>
+</html>
